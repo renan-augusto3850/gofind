@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
     className="w-60 shadow-sm position-center"
     />
     <h1 className="font-mono">HELLO, IM RENAN!</h1>
+    <SpeedInsights/>
     </main>
   );
 }
