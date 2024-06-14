@@ -10,7 +10,7 @@ export default function Home() {
     alt='Hello'
     className="w-60 shadow-sm position-center"
     />
-    <h1 className="font-mono">HELLO, I'M RENAN!</h1>
+    <h1 className="font-mono">HELLO, IM RENAN!</h1>
     </main>
   );
 }
