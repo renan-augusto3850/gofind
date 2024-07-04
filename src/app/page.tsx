@@ -3,11 +3,21 @@ import Image from "next/image";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import React, { useState } from  'react';
 
+interface Result {
+  name: string;
+  url: string;
+}
+
 export default function Home() {
   const [isMoved, setIsMoved] = useState(false);
   const [results, setResults] = useState([]);
 
-  async function makeSearch(text, e) {
+  const makeSearch = async(e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    const target = e.target as HTMLTextAreaElement;
+    const text = target.value; 
+    if(!text && isMoved == true) {
+      setIsMoved(!isMoved);
+    }
     if(e.key == 'Enter') {
       if(!isMoved) {
         setIsMoved(!isMoved);
@@ -30,11 +40,6 @@ export default function Home() {
       }
     }
   }
-  function checkNone(text : string) {
-    if(!text && isMoved == true) {
-      setIsMoved(!isMoved);
-    }
-  }
 
   return (
     <main className="text-center">
@@ -49,15 +54,15 @@ export default function Home() {
     <div className="absolute m-auto top-0 bottom-0 left-0 right-0 h-100">
       <textarea placeholder="Type anything:" 
       className={`resize-none w-1/2 left-1/4 rounded-lg absolute color-black transition-all ${isMoved ? 'top-5' : 'top-1/2'}`}
-      onKeyDown={(e) => {checkNone(e.target.value); makeSearch(e.target.value, e)}}></textarea>
+      onKeyDown={makeSearch}></textarea>
     </div>
     <div className={`${isMoved ? 'block' : 'hidden'}`} id="results">
       <div>
-        {results.map((result, index) => (
+        {results.map((result : Result, index) => (
           <React.Fragment key={index}>
             <a href={result.url}>{result.name}</a>
             <br />
-        </React.Fragment>// Altere conforme a estrutura do seu resultado
+        </React.Fragment>
         ))}
       </div>
     </div>
