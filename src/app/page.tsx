@@ -7,6 +7,9 @@ interface Result {
   name: string;
   url: string;
 }
+interface searchResponse {
+  error: String
+}
 
 export default function Home() {
   const [isMoved, setIsMoved] = useState(false);
@@ -30,9 +33,11 @@ export default function Home() {
         },
         body: JSON.stringify({ search: text }),
       });
-      
       if (response.ok) {
         const data = await response.json();
+        if(response.error) {
+
+        }
         setResults(data);
         console.log(data);
       } else {

@@ -21,11 +21,12 @@ export async function POST(req : Request) {
     await client.connect();
     const db = client.db(dbName);
     const collection = db.collection('sites');
-    const searchResult = await collection.find({ tags: {$regex: new RegExp(searchText, 'i')} }).toArray();
+    const searchResult = await collection.find({ tags: {$regex: new RegExp(searchText.search, 'i')} }).toArray();
     
     return NextResponse.json(searchResult);
   } catch (error) {
     console.error(error);
+    return NextResponse.json({error: ["error"]});
   } finally {
     await client.close();
   }

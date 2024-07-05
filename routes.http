@@ -1,4 +1,4 @@
-POST http://localhost:3000/api/search
+POST https://renan-next.vercel.app/api/search
 Content-Type: "application/json"
 
 {"search": "EBJN"}
