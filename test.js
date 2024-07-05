@@ -12,8 +12,11 @@
 }
 */
 const MongoClient = require('mongodb').MongoClient;
+require('dotenv').config();
 
-const uri = "mongodb+srv://terreorenan68:rv9mUE0Q6TJ1IXbJ@gofing.pquxsyl.mongodb.net/?retryWrites=true&w=majority&appName=gofing";
+const { PASSWORD } = process.env;
+
+const uri = `mongodb+srv://terreorenan68:${PASSWORD}@gofing.pquxsyl.mongodb.net/?retryWrites=true&w=majority&appName=gofing`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
