@@ -15,7 +15,7 @@
         "child_process": "^1.0.2",
         "dotenv": "^16.4.5",
         "mongodb": "^6.7.0",
-        "next": "14.2.13",
+        "next": "14.2.21",
         "react": "^18",
         "react-dom": "^18"
     },
